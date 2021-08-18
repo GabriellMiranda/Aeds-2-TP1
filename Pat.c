@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Pat.h"
-
+//oi
 //Essa função retorna o caracter na posição i do vetor k[]
 char Bit(unsigned char i, char k[]){
     return(k[i]);

@@ -1,6 +1,6 @@
 #ifndef PAT_H
 #define PAT_H
-
+//oi
 typedef enum{
     interno, externo
 } TipoNo; // Identificar se o no é externo ou interno.
