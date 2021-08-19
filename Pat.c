@@ -15,7 +15,7 @@ short NoEExterno(TipoPatNo *No){
 //Essa funcão cria um nó interno 
 TipoPatNo *criaNoInt(int i, char c, TipoPatNo **Esq, TipoPatNo **Dir){
     TipoPatNo *no;
-    no = malloc(sizeof(TipoPatNo));
+    no = (TipoPatNo *)malloc(sizeof(TipoPatNo));
     no->Tipono = interno;
     no->PatNo.NoInterno.Esq = *Esq;
     no->PatNo.NoInterno.Dir = *Dir;
@@ -26,7 +26,7 @@ TipoPatNo *criaNoInt(int i, char c, TipoPatNo **Esq, TipoPatNo **Dir){
 //Essa função cria um nó externo
 TipoPatNo *criaNoExt(char *string){
     TipoPatNo *no;
-    no = malloc(sizeof(TipoPatNo));
+    no = (TipoPatNo *)malloc(sizeof(TipoPatNo));
     no->Tipono = externo;
     no->PatNo.chave = malloc(50 * sizeof(char));
     strcpy(no->PatNo.chave, string);

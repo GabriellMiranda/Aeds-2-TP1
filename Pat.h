@@ -1,6 +1,6 @@
 #ifndef PAT_H
 #define PAT_H
-//oi
+
 typedef enum{
     interno, externo
 } TipoNo; // Identificar se o no é externo ou interno.
@@ -10,9 +10,10 @@ typedef struct TipoPatNo{
     union{ 
       struct{
         unsigned char indice; // essa variável guarda o indice em que o no interno se difere
-        char compara; // ess variável guadra o caracter diferente, presente no indice acima
+        char compara; // essa variável guadra o caracter diferente, presente no indice acima
         struct TipoPatNo *Esq, *Dir;
     } NoInterno;
+
     char *chave; // ponteiro para char que aponta para a estring que está sendo armazenada, se o no for externo
     }PatNo;
 } TipoPatNo;
