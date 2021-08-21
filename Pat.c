@@ -24,19 +24,13 @@ TipoPatNo *criaNoInt(int i, char c, TipoPatNo **Esq, TipoPatNo **Dir){
     return no;
 }
 //Essa função cria um nó externo
-TipoPatNo *criaNoExt(char *string, int id){
+TipoPatNo *criaNoExt(char *string){
     TipoPatNo *no;
     no = (TipoPatNo *)malloc(sizeof(TipoPatNo));
     no->Tipono = externo;
     no->PatNo.chave = malloc(50 * sizeof(char));
-   // strcpy(no->PatNo.chave, string); aqui deu um erro muito estranho que so jesus sabe explicar.
-   // printf("%s\n", no->PatNo.chave);
-    //cria lista e aponta para NULL
-    no->PatNo.listaI = (Tlista *)malloc(sizeof(Tlista));
-    FLvazia(&(no->PatNo.listaI));
-    //cria a primeira lista onde se insere o primeiro elemento
-    Insere_Iarquivo(&(no->PatNo.listaI), id);
-    strcpy(no->PatNo.chave, string);
+    strcpy(no->PatNo.chave, string); //aqui deu um erro muito estranho que so jesus sabe explicar.
+    printf("printado o no a ser inserido.\n");
     printf("%s\n", no->PatNo.chave);
     return no;
 }
@@ -59,10 +53,10 @@ void SearchPat (char k[], TipoPatNo *no){
     }
 }
 
-TipoPatNo *InsereEntre(char k[], char compara, TipoPatNo **no, int i, int id){
+TipoPatNo *InsereEntre(char k[], char compara, TipoPatNo **no, int i){
     TipoPatNo *Auxno;
     if(NoEExterno(*no)){
-        Auxno = criaNoExt(k, id);
+        Auxno = criaNoExt(k);
         if(Bit(i, k) > Bit(i, (*no)->PatNo.chave)){
             return criaNoInt(i, k[i], no, &Auxno);
         }else{
@@ -70,16 +64,16 @@ TipoPatNo *InsereEntre(char k[], char compara, TipoPatNo **no, int i, int id){
         }
     }
     else if( i == (*no)->PatNo.NoInterno.indice){
-        Auxno = criaNoExt(k, id);
+        Auxno = criaNoExt(k);
         if(Bit(i, k) > (*no)->PatNo.NoInterno.compara){
             return criaNoInt(i, k[i], no, &Auxno);
         }else{
-            (*no)->PatNo.NoInterno.Esq = InsereEntre(k, compara, &(*no)->PatNo.NoInterno.Esq, i, id);
+            (*no)->PatNo.NoInterno.Esq = InsereEntre(k, compara, &(*no)->PatNo.NoInterno.Esq, i);
              return (*no);
         }
     }
     else if( i < (*no)->PatNo.NoInterno.indice){
-        Auxno = criaNoExt(k, id);
+        Auxno = criaNoExt(k);
         if(Bit(i, k) > compara){
             return criaNoInt(i, k[i], no, &Auxno);
         }else{
@@ -88,19 +82,19 @@ TipoPatNo *InsereEntre(char k[], char compara, TipoPatNo **no, int i, int id){
     }
     else{
         if(Bit((*no)->PatNo.NoInterno.indice, k) == (*no)->PatNo.NoInterno.compara){
-            (*no)->PatNo.NoInterno.Dir = InsereEntre(k, compara, &(*no)->PatNo.NoInterno.Dir, i, id);
+            (*no)->PatNo.NoInterno.Dir = InsereEntre(k, compara, &(*no)->PatNo.NoInterno.Dir, i);
         }else{
-            (*no)->PatNo.NoInterno.Esq = InsereEntre(k, compara, &(*no)->PatNo.NoInterno.Esq, i, id);
+            (*no)->PatNo.NoInterno.Esq = InsereEntre(k, compara, &(*no)->PatNo.NoInterno.Esq, i);
         }
         return (*no);
     }
 }
 
-TipoPatNo *Insere(char k[], TipoPatNo **no, int id){
+TipoPatNo *Insere(char k[], TipoPatNo **no){
     TipoPatNo *Auxno;
     int i;
     if (*no == NULL){ // arvore vazia insere no externo
-        return criaNoExt(k, id);
+        return criaNoExt(k);
     }else{
         Auxno = *no;
         while (!NoEExterno(Auxno)){
@@ -115,10 +109,10 @@ TipoPatNo *Insere(char k[], TipoPatNo **no, int id){
         if(strcmp(k, Auxno->PatNo.chave) == 0){
            printf("A palavra ja esta na arvore");
             //Nessa parte que vamos colocar o contador pra mostra quantas palavras iguais foram inseridas na arvore
-            ContaPalavras(Auxno->PatNo.listaI, id);
+           // ContaPalavras(Auxno->PatNo.listaI, id);
             return(*no);
         }else{// Entra nesse else quando encontra um letra diferente 
-            return (InsereEntre(k, Auxno->PatNo.chave[i], no, i, id));
+            return (InsereEntre(k, Auxno->PatNo.chave[i], no, i));
         }
     }
 }
@@ -126,11 +120,7 @@ TipoPatNo *Insere(char k[], TipoPatNo **no, int id){
 //int ContaPalavras(TipoPatNo *no);
 
 void ImprimePalavras(TipoPatNo *no){
-    if(no->Tipono == externo){
-        printf("%s ", no->PatNo.chave);
-        //imprimeLista(no->PatNo.listaI);
-
-    }
+    if(no->Tipono == externo)printf("%s\n", no->PatNo.chave);
     else{
         ImprimePalavras(no->PatNo.NoInterno.Esq);
         ImprimePalavras(no->PatNo.NoInterno.Dir);

@@ -4,15 +4,16 @@
 #include "LIndice_invertido.h"
 
 int main(){
-   
-   /* Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
+
+    printf("Lista indice invertido\n");
+    Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
     Tlista *Lista2 = (Tlista *)malloc(sizeof(Tlista));
     FLvazia(Lista);
     Insere_Iarquivo(Lista, 1); //uma palavra no arquivo 1;
     Insere_Iarquivo(Lista, 2); 
     ContaPalavras(Lista, 1);
     imprimeLista(Lista);
-*/
+
 
    /* FILE *arquivo;
     TipoPatNo *Arvore = NULL;
@@ -23,17 +24,14 @@ int main(){
         Arvore = Insere(palavra, &Arvore);
         printf("%s\n", palavra);
     }*/
-
+    printf("\n\nArvore Patricia.\n");
     TipoPatNo *Arvore = NULL;
-    Arvore = Insere("gabriel", &Arvore, 3);
- //   printf("%d", (Arvore->PatNo.listaI->primeiro->inver->idDoc));
-    //Arvore = Insere("gabriel", &Arvore, 3);
-    Arvore = Insere("erike", &Arvore, 4);
-    Arvore = Insere("mariana", &Arvore, 1);
-    Arvore = Insere("felipe", &Arvore, 2);
-    Arvore = Insere("Mae", &Arvore, 2);
+    Arvore = Insere("felipe", &Arvore);
+    Arvore = Insere("gabriel", &Arvore);
+    Arvore = Insere("erike", &Arvore);
+    Arvore = Insere("mariana", &Arvore);
+    printf("\n");
     ImprimePalavras(Arvore);
-    imprimeLista(Arvore->PatNo.listaI);
-   // pclose(arquivo);
+
     return 0;
 }
