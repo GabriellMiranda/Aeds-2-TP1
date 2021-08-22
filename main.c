@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Pat.h"
 #include "LIndice_invertido.h"
+#include "tst.h"
 
 int main(){
 
@@ -24,7 +25,12 @@ int main(){
         Arvore = Insere(palavra, &Arvore);
         printf("%s\n", palavra);
     }*/
+
+    printf("\n");
+    printf("--------------------------------------------\n");
     printf("\n\nArvore Patricia.\n");
+    printf("--------------------------------------------\n");
+
     TipoPatNo *Arvore = NULL;
     Arvore = Insere("felipe", &Arvore);
     Arvore = Insere("gabriel", &Arvore);
@@ -32,6 +38,29 @@ int main(){
     Arvore = Insere("mariana", &Arvore);
     printf("\n");
     ImprimePalavras(Arvore);
+    printf("\n");
+
+    printf("--------------------------------------------\n");
+    printf("Arvore TST\n");
+    printf("--------------------------------------------\n");
+
+    TipoApontador *No;
+
+    inicializaTST(&No);
+    printf("inicializou na Arvore TST\n");
+
+    insereTST(&No, "eua");
+    insereTST(&No, "euc");
+    insereTST(&No, "eub");
+    //insereTST(&No, "eub");
+    insereTST(&No, "euu");
+    insereTST(&No, "euv");
+    insereTST(&No, "euw");
+
+    printf("inseriu na arvore TST\n");
+
+    printf("\n");
+    imprimeTST(No);
 
     return 0;
 }
