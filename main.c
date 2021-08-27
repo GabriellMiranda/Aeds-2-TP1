@@ -3,17 +3,17 @@
 #include "Pat.h"
 #include "LIndice_invertido.h"
 #include "tst.h"
-
+// gcc main.c LIndice_invertido.c Pat.c tst.c -o e
 int main(){
 
-    printf("Lista indice invertido\n");
+   /* printf("Lista indice invertido\n");
     Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
     Tlista *Lista2 = (Tlista *)malloc(sizeof(Tlista));
     FLvazia(Lista);
     Insere_Iarquivo(Lista, 1); //uma palavra no arquivo 1;
     Insere_Iarquivo(Lista, 2); 
     ContaPalavras(Lista, 1);
-    imprimeLista(Lista);
+    imprimeLista(Lista);*/
 
 
    /* FILE *arquivo;
@@ -31,16 +31,21 @@ int main(){
     printf("\n\nArvore Patricia.\n");
     printf("--------------------------------------------\n");
 
-    TipoPatNo *Arvore = NULL;
-    Arvore = Insere("felipe", &Arvore);
-    Arvore = Insere("gabriel", &Arvore);
-    Arvore = Insere("erike", &Arvore);
-    Arvore = Insere("mariana", &Arvore);
-    printf("\n");
-    ImprimePalavras(Arvore);
-    printf("\n");
+    TipoArvore patricia = NULL;
 
-    printf("--------------------------------------------\n");
+    patricia = patInsere(&patricia, "marianac");
+    patricia = patInsere(&patricia, "gabriel");
+    patricia = patInsere(&patricia, "felipe");
+    patricia = patInsere(&patricia, "erike");
+    patricia = patInsere(&patricia, "caio");
+    patricia = patInsere(&patricia, "fulano");
+    patricia = patInsere(&patricia, "bruna");
+    patricia = patInsere(&patricia, "marianap");
+    printf("\n\n\n");
+    pat_print(&patricia);
+   
+
+   /* printf("--------------------------------------------\n");
     printf("Arvore TST\n");
     printf("--------------------------------------------\n");
 
@@ -61,6 +66,6 @@ int main(){
 
     printf("\n");
     imprimeTST(No);
-
+*/
     return 0;
 }

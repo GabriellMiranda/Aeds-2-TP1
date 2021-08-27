@@ -25,9 +25,10 @@ void ContaPalavras(Tlista *lista, int id){
 
 void imprimeLista(Tlista *Lista){
     printf("entrou\n");
-    TcelulaInvertida *Aux = Lista->primeiro->prox;
+    TcelulaInvertida *Aux;
+    Aux = Lista->primeiro->prox;
     while (Aux != NULL){
-        printf("<%d, %d> ",Aux->inver->qtd, Aux->inver->idDoc);
+        printf("<%d, %d> ", Aux->inver->qtd, Aux->inver->idDoc);
         Aux = Aux->prox;
     }
     
