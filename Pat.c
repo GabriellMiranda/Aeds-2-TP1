@@ -66,13 +66,9 @@ void CriaNoExt(TipoArvore *no, char *k) {
   (*no)->nt = externo;
   (*no)->NO.palavra = (char *) malloc((strlen(k)+1)*sizeof(char)); //aloca espaço para inserção da nova palavra
   strcpy((*no)->NO.palavra, k);
-  printf("Verificacao para ver se nao esta criando uma quantidade excessiva de no:\n");
- // printf("%s\n",(*no)->NO.palavra);
- /* Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
-  FLvazia(Lista);
-  Insere_Iarquivo(Lista, 1);
-  (*no)->NO.Lista = Lista;*/
-  printf("%s\n",(*no)->NO.palavra);
+  (*no)->NO.Lista = NULL;
+  Insere_Iarquivo(&(*no)->NO.Lista, 1);
+
 }
 
 //Operação de pesquisa em uma árvore Patricia
@@ -156,6 +152,6 @@ void pat_print(TipoArvore *no) {
   
   //Faz um percurso em ordem: vai primeiro nos nós a esquerda e depois nos nós a direita recursivamente
   if (TipodeNO(*no) == interno) pat_print(&(*no)->NO.Ninterno.Esq);
-  if (TipodeNO(*no) == externo) puts((*no)->NO.palavra);// imprimeLista(&(*no)->NO.Lista); //Imprime apenas quando se encontra um nó externo
+  if (TipodeNO(*no) == externo) puts((*no)->NO.palavra); imprimeLista(&(*no)->NO.Lista); //Imprime apenas quando se encontra um nó externo
   if (TipodeNO(*no) == interno) pat_print(&(*no)->NO.Ninterno.Dir);
 }

@@ -4,6 +4,16 @@
 #include "LIndice_invertido.h"
 #include "tst.h"
 // gcc main.c LIndice_invertido.c Pat.c tst.c -o e
+
+void minusculo(char *s1, char *s2){
+    int i = 0;
+    while (s1[i] != '\0'){
+        s2[i] = tolower(s1[i]);
+        i++;
+    }
+    s2[i] = '\0';
+    
+}
 int main(){
 
    /* printf("Lista indice invertido\n");
@@ -15,23 +25,25 @@ int main(){
     ContaPalavras(Lista, 1);
     imprimeLista(Lista);*/
 
-
-   /* FILE *arquivo;
+    TipoArvore patricia = NULL;
+    /*FILE *arquivo;
     TipoPatNo *Arvore = NULL;
-    char palavra[50];
+    char palavra[50], palavra2[50];
     arquivo = fopen("arquivo1.txt","r");
     while (!feof(arquivo)) {
         fscanf(arquivo,"%s ", palavra);
-        Arvore = Insere(palavra, &Arvore);
-        printf("%s\n", palavra);
-    }*/
+        minusculo(palavra, palavra2);
+        /*printf("%s\n", palavra);
+        printf("%s\n", palavra2);*/
+  //      patricia = patInsere(&patricia, palavra2);
+   // }*/
 
     printf("\n");
     printf("--------------------------------------------\n");
     printf("\n\nArvore Patricia.\n");
     printf("--------------------------------------------\n");
 
-    TipoArvore patricia = NULL;
+    
 
     patricia = patInsere(&patricia, "marianac");
     patricia = patInsere(&patricia, "gabriel");

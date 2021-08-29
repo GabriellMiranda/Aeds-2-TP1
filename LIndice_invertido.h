@@ -6,21 +6,21 @@
 typedef struct{
     int qtd;
     int idDoc;
-}Tpinver;
+}Tupla_inver;
 
-typedef struct Tcelula{
-    Tpinver *inver;
-    struct Tcelula *prox;
-}TcelulaInvertida;
+typedef struct ListaInvertida{
+    Tupla_inver Invertida;
+    struct ListaInvertida *prox;
+}ListaInvertida;
 
-typedef struct Lista{
+/*typedef struct Lista{
     struct Tcelula *primeiro;
     struct Tcelula *ultimo;
-}Tlista;
+}Tlista;*/
 
-void FLvazia(Tlista *lista);
-void Insere_Iarquivo(Tlista *lista, int id);
-void ContaPalavras(Tlista *lista, int id);
-void imprimeLista(Tlista *Lista);
+void FLvazia(ListaInvertida *lista);
+void Insere_Iarquivo(ListaInvertida *lista, int id);
+void ContaPalavras(ListaInvertida *lista, int id);
+void imprimeLista(ListaInvertida *Lista);
 
 #endif
