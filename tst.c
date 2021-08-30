@@ -100,25 +100,21 @@ int pesquisarTST(TipoApontador *No, char *Palavra) {
     
 
     if (!*No) {
-        //(*Comparacoes)++;
         return 0;
     }
   
     if (*Palavra < (*No)->Letra){
-        //(*Comparacoes)++;
         return pesquisarTST(&(*No)->Esquerda, Palavra);
     }
   
     else if (*Palavra > (*No)->Letra) {
-        //(*Comparacoes)++;
         return pesquisarTST(&(*No)->Direita, Palavra);
     }
   
     else
     {
-        //(*Comparacoes)++;
         if (*(Palavra+1) == '\0') {
-            //(*Comparacoes)++;
+
             return (*No)->ehOFimDaString;
         }
         return pesquisarTST(&(*No)->Igual, Palavra+1);

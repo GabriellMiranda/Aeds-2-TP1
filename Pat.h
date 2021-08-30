@@ -38,7 +38,7 @@ typedef struct TipoPatNo {
     }Ninterno;
     //nó externo
     char *palavra; //armazena palavra
-    ListaInvertida *Lista;
+  Tlista *Lista;
   }NO;
 } TipoPatNo;
 
