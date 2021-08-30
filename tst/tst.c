@@ -10,13 +10,13 @@ void insereTST(TipoApontador *No, char *Letra){
     
     //condição para saber se a palavra está ou não na árvore, pesquisar ela na árvore
    if(pesquisarTST(&(*No),Letra)){
-        //(*Comparacoes)++;
+    
         printf("A palavra %s ja esta na arvore.\n",Letra);
         return;
     }
     //Se não tiver, entra na função de inserir
     else{
-        //(*Comparacoes)++;
+    
         insereTSTAux(&(*No),Letra);
         return;
     }
@@ -35,9 +35,8 @@ void insereTSTAux(TipoApontador *No, char *Letra){
     
     
     if(!(*No)){
-        //(*Comparacoes)++;
+    
         *No = (TipoApontador)malloc(sizeof(TipodoNO));
-        //(*Memoria) += sizeof(*No);
         (*No)->Letra = *Letra;
         (*No)->Esquerda = NULL;
         (*No)->Direita = NULL;
@@ -46,21 +45,21 @@ void insereTSTAux(TipoApontador *No, char *Letra){
     }
 
     if ((*Letra) < (*No)->Letra){
-        //(*Comparacoes)++;
+    
         insereTSTAux(&((*No)->Esquerda), Letra);
     } 
     else if ((*Letra) > (*No)->Letra){
-        //(*Comparacoes)++;
+    
         insereTSTAux(&((*No)->Direita), Letra);
     } 
     else{
-        //(*Comparacoes)++;
+    
         if (*(Letra+1)){
-            //(*Comparacoes)++;
+        
             insereTSTAux(&((*No)->Igual ), Letra+1);
         }
         else {
-            //(*Comparacoes)++;
+        
             (*No)->ehOFimDaString = 1;
             return;
         }
