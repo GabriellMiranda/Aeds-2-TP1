@@ -54,7 +54,6 @@ int main(){
     Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
     Tlista *Lista2 = (Tlista *)malloc(sizeof(Tlista));
     FLvazia(Lista);
-    
     Insere_Iarquivo(Lista, 1); //uma palavra no arquivo 1; id = 1
     Insere_Iarquivo(Lista, 2); //uma palavra no arquivo 2; id = 2
     ContaPalavras(Lista, 1);//contando que existe mais uma palavra no arquivo 1
