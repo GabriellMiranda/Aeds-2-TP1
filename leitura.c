@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "./patricia/Pat.h"
-#include "./indiceInvertido/LIndice_invertido.h"
-#include "./tst/tst.h"
+#include "Pat.h"
+#include "LIndice_invertido.h"
+#include "tst.h"
 
 void minusculo(char *s1, char *s2){
     int i = 0;
@@ -40,4 +40,12 @@ void InsereArquivoTST(TipoApontador *TST){
         insereTST(&TST, palavra2);
     }
     fclose(arquivo);
+}
+
+void BuscaPorTexto(){
+    int q;
+    printf("Digite a quantidade de termos:\n");
+    for(int i = 0; i <q; i++){
+        printf("Digite o termo:\n");
+    }
 }

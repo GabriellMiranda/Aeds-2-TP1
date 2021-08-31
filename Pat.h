@@ -10,7 +10,7 @@ Felipe Stenner - 3888
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "./indiceInvertido/LIndice_invertido.h"
+//#include "./indiceInvertido/LIndice_invertido.h"
 
 typedef struct {
   int indice;
@@ -38,7 +38,7 @@ typedef struct TipoPatNo {
     }Ninterno;
     //nó externo
     char *palavra; //armazena palavra
-    Tlista *Lista;
+    //Tlista *Lista;
   }NO;
 } TipoPatNo;
 

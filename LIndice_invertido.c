@@ -13,7 +13,6 @@ void FLvazia(Tlista *lista){
 void Insere_Iarquivo(Tlista *lista, int id){ 
     lista->ultimo->prox = (TcelulaInvertida *)malloc(sizeof(TcelulaInvertida));
     lista->ultimo = lista->ultimo->prox;
- // lista->ultimo->prox->inver->idDoc = id;
     lista->ultimo->inver = (Tpinver*)malloc(sizeof(Tpinver));
     lista->ultimo->inver->idDoc = id;
     lista->ultimo->inver->qtd = 1;

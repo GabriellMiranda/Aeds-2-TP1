@@ -66,11 +66,11 @@ void CriaNoExt(TipoArvore *no, char *k) {
   (*no)->nt = externo;
   (*no)->NO.palavra = (char *) malloc((strlen(k)+1)*sizeof(char)); //aloca espaço para inserção da nova palavra
   strcpy((*no)->NO.palavra, k);
-  Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
+ /* Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
   FLvazia(Lista);
   Insere_Iarquivo(Lista, 1);
   (*no)->NO.Lista = Lista;
-  printf("%s\n", (*no)->NO.palavra);
+  printf("%s\n", (*no)->NO.palavra);*/
  
 }
 

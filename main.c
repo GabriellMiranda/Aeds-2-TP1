@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "./patricia/Pat.h"
-#include "./indiceInvertido/LIndice_invertido.h"
-#include "./tst/tst.h"
+#include "Pat.h"
+#include "LIndice_invertido.h"
+#include "tst.h"
 #include "leitura.c"
-// gcc main.c indiceInvertido/LIndice_invertido.c patricia/Pat.c tst/tst.c leitura.c -o e
+// gcc main.c LIndice_invertido.c Pat.c tst.c leitura.c -o e
 
 
 int main(){
-
+    printf("oi");
     TipoArvore Patricia = NULL;
     TipoApontador *TST;
     inicializaTST(&TST);
@@ -35,7 +35,7 @@ int main(){
             pat_print(&Patricia);
         }
         else if(opcao == 4){
-            imprimeTST(TST);
+            imprimeTST(&TST);
         }
         else if(opcao == 5){
 
@@ -49,22 +49,4 @@ int main(){
  return 0;
 }
 
-/*Teste lista
-    printf("Lista indice invertido\n");
-    Tlista *Lista = (Tlista *)malloc(sizeof(Tlista));
-    Tlista *Lista2 = (Tlista *)malloc(sizeof(Tlista));
-    FLvazia(Lista);
-    Insere_Iarquivo(Lista, 1); //uma palavra no arquivo 1; id = 1
-    Insere_Iarquivo(Lista, 2); //uma palavra no arquivo 2; id = 2
-    ContaPalavras(Lista, 1);//contando que existe mais uma palavra no arquivo 1
-    ContaPalavras(Lista, 2);
-
-    FLvazia(Lista2);
-    imprimeLista(Lista);
-    Insere_Iarquivo(Lista2, 1); //uma palavra no arquivo 1; id = 1
-    Insere_Iarquivo(Lista2, 2); //uma palavra no arquivo 2; id = 2
-    ContaPalavras(Lista2, 1);//contando que existe mais uma palavra no arquivo 1
-    ContaPalavras(Lista2, 2);
-    imprimeLista(Lista);
-
-*/
+    
