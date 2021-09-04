@@ -61,17 +61,16 @@ TipoArvore CriaNoInt(TipoArvore* Esq, TipoArvore *Dir, tupla_t tupla) {
 }
 
 //Operação interna para inicialização de um novo nó externo
-void CriaNoExt(TipoArvore *no, char *k) {
+void CriaNoExt(TipoArvore *no, char *k, int id) {
   Tipochave chave;
   chave.palavra = (char*)malloc(sizeof(char));
   chave.lista = (Tlista*)malloc(sizeof(Tlista));
   strcpy(chave.palavra, k);
   FLvazia(chave.lista);
-  Insere_Iarquivo(chave.lista, 1);
+  Insere_Iarquivo(chave.lista, id);
   (*no) = (TipoArvore) malloc(sizeof(TipoPatNo));
   (*no)->nt = externo;
   (*no)->NO.chave = chave;
-  printf("%s\n", (*no)->NO.chave.palavra);
 
 }
 
@@ -96,12 +95,12 @@ int PesquisaPat(TipoArvore no, char *k) {
 
 
 //Operação interna para inserção de novo nó interno
-TipoArvore patInsereEntre(TipoArvore* no, char *k, tupla_t tupla) {
+TipoArvore patInsereEntre(TipoArvore* no, char *k, tupla_t tupla, int id) {
   TipoArvore Aux;
   //Se o nó atual for um nó externo ou se a palavra for menor que o indice do interno atual
   if (TipodeNO(*no) == externo || tupla.indice < (*no)->NO.Ninterno.indice) {
     
-    CriaNoExt(&Aux, k); //Cria nó externo para armazer palavra
+    CriaNoExt(&Aux, k, id); //Cria nó externo para armazer palavra
     //escolhe se a string será inserida a esquerda ou a direita do novo nó interno
     if (k[tupla.indice] > tupla.letra) {
       return CriaNoInt(no, &Aux, tupla);//Aux para a Dir
@@ -114,20 +113,20 @@ TipoArvore patInsereEntre(TipoArvore* no, char *k, tupla_t tupla) {
     e chamando recursivamente a função*/
 
     if (k[(*no)->NO.Ninterno.indice] >  (*no)->NO.Ninterno.letra) {
-      (*no)->NO.Ninterno.Dir = patInsereEntre(&(*no)->NO.Ninterno.Dir, k, tupla);
+      (*no)->NO.Ninterno.Dir = patInsereEntre(&(*no)->NO.Ninterno.Dir, k, tupla, id);
     } else {
-      (*no)->NO.Ninterno.Esq = patInsereEntre(&(*no)->NO.Ninterno.Esq, k, tupla);
+      (*no)->NO.Ninterno.Esq = patInsereEntre(&(*no)->NO.Ninterno.Esq, k, tupla, id);
     }
     return (*no); // retorna Patricia com nova palavra
   }
 }
 
 //Operação para inserção de uma nova palavra em uma árvore Patricia
-TipoArvore patInsere(TipoArvore* no, char *k) {
+TipoArvore patInsere(TipoArvore* no, char *k, int id) {
   Tipochave chave;
-
+  int verifica;
   if((*no) == NULL) {
-    CriaNoExt(no, k); //Caso base: árvore vazia, inicia novo nó externo e armazena a palavra nele
+    CriaNoExt(no, k, id); //Caso base: árvore vazia, inicia novo nó externo e armazena a palavra nele
     return (*no);
   } 
   
@@ -145,24 +144,26 @@ TipoArvore patInsere(TipoArvore* no, char *k) {
     }
   }
   if (strcmp(aux->NO.chave.palavra, k) == 0) {
-    ContaPalavras(aux->NO.chave.lista, 1);
+    Tlista *lista = aux->NO.chave.lista;
+    verifica = ContaPalavras(lista, id);
     return (*no);
   }
 
   tupla_t tupla = get_char(k, aux->NO.chave.palavra);
-  return patInsereEntre(no, k, tupla); //Chama operação para criação de nó interno e armazenar palavra
+  return patInsereEntre(no, k, tupla, id); //Chama operação para criação de nó interno e armazenar palavra
 }
 
 //Operação que imprime uma árvore Patricia em Ordem
 
-void ImprimePalavras(TipoArvore *no){
+void ImprimePalavrasPat(TipoArvore *no){
     if (TipodeNO(*no) == externo) {
-      printf("%s ",(*no)->NO.chave.palavra); //se o no for externo, imprime a chave dele
+      printf("\n");
+      printf("[%s] =>",(*no)->NO.chave.palavra); //se o no for externo, imprime a chave dele
       imprimeLista((*no)->NO.chave.lista);
       printf("\n");
     }else{                                                     //e se nao, chama recursivamente para os filhos a esquerda e a direita
-        ImprimePalavras(&(*no)->NO.Ninterno.Esq);
-        ImprimePalavras(&(*no)->NO.Ninterno.Dir);
+        ImprimePalavrasPat(&(*no)->NO.Ninterno.Esq);
+        ImprimePalavrasPat(&(*no)->NO.Ninterno.Dir);
     }
 }
 
@@ -177,15 +178,24 @@ void minusculo(char *s1, char *s2){
 }
    
 void leiturPAT(TipoArvore *patricia){
+    int id;
     FILE *arquivo;
+    char nome_arquivo[50];
     char palavra[50], palavra2[50];
-    arquivo = fopen("arquivo1.txt","r");
+    printf("Digite o id do arquivo:\n");
+    scanf("%d", &id);
+    printf("Agora Digite o nome do arquivo:\n");
+    setbuf(stdin, 0);
+    gets(nome_arquivo);
+    arquivo = fopen(nome_arquivo, "r");
     while (!feof(arquivo)) {
         fscanf(arquivo,"%s ", palavra);
         minusculo(palavra, palavra2);
-        /*printf("%s\n", palavra);
-        printf("%s\n", palavra2);*/
-        (*patricia) = patInsere(patricia, palavra2);
+        (*patricia) = patInsere(patricia, palavra2, id);
     }
+  pclose(arquivo);
+}
+
+void Pat_indice(TipoArvore *no){
 
 }

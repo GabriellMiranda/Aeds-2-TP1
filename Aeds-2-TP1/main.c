@@ -6,20 +6,18 @@
 #include "tst.h"
 //#include "leitura.h"
 // gcc main.c LIndice_invertido.c Pat.c tst.c -o e
+typedef struct consulta{
+   char palavra[50];
+}consulta;
 
 int main(){
-
+    int qtd;
+    consulta Palavra[qtd];
     TipoApontador TST;
     TipoArvore Patricia = NULL;
     inicializaTST(&TST);
     bool op1 = true;
-    Patricia = patInsere(&Patricia, "gabriel");
-    Patricia = patInsere(&Patricia, "gabriel");
-    Patricia = patInsere(&Patricia, "mariana");
-    Patricia = patInsere(&Patricia, "felipe");
-    Patricia = patInsere(&Patricia, "ricardo");
-    Patricia = patInsere(&Patricia, "fatima");
-    ImprimePalavras(&Patricia);
+    char palavra[50];
     
     int opcao;
     while (op1 == true){
@@ -29,7 +27,7 @@ int main(){
         printf("| 2 - Inserir as palavras do dicionario na arvore TST.                  |\n");
         printf("| 3 - Imprimir o Indice Invertido.                                      |\n");
         printf("| 4 - Imprimir as palavras da TST.                                      |\n");
-        printf("| 5 - Imprimir uma palavra na Patricia, a partir do indice invertido.   |\n");
+        printf("| 5 - Buscar por uma palavra na PATRICIA, a partir do indice construido.|\n");
         printf("| 6 - Sair.                                                             |\n");
         printf("|-----------------------------------------------------------------------|\n");
         printf("Opcao: ");scanf("%d", &opcao);
@@ -40,13 +38,19 @@ int main(){
             InsereArquivoTST(&TST);
         }
         else if(opcao == 3){
-           ImprimePalavras(&Patricia);
+            printf("<qtd, id>\n");
+           ImprimePalavrasPat(&Patricia);
         }
         else if(opcao == 4){
             imprimeTST(TST);
         }
         else if(opcao == 5){
-             ImprimePalavras(&Patricia);
+             printf("Digite a quantidade de palavras que deseja buscar:\n");
+             scanf("%d", &qtd);
+             for(int i = 0; i <qtd; i++){
+                 printf("Digite o primeiro termo da pesquisa:\n");
+                 scanf("%s", Palavra[i].palavra);
+             }
         }
         else if(opcao == 6){
         op1 = false;

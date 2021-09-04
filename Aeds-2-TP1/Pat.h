@@ -50,11 +50,12 @@ typedef struct TipoPatNo {
 
 int TipodeNO(TipoArvore t);
 TipoArvore CriaNoInt(TipoArvore* Esq, TipoArvore *Dir, tupla_t tupla);
-void CriaNoExt(TipoArvore *no, char *k);
+void CriaNoExt(TipoArvore *no, char *k, int id);
 int PesquisaPat(TipoArvore t, char *k);
-TipoArvore patInsere(TipoArvore* t, char *k);
-TipoArvore patInsereEntre(TipoArvore* patricia, char *k, tupla_t tupla);
+TipoArvore patInsere(TipoArvore* t, char *k, int id);
+TipoArvore patInsereEntre(TipoArvore* patricia, char *k, tupla_t tupla, int id);
 void minusculo(char *s1, char *s2);
 void leiturPAT(TipoArvore* pat);
-void ImprimePalavras(TipoArvore *no);
+void ImprimePalavrasPat(TipoArvore *no);
+void Pat_indice(TipoArvore *no);
 #endif

@@ -24,7 +24,8 @@ typedef struct Lista{
 
 void FLvazia(Tlista *lista);
 void Insere_Iarquivo(Tlista *lista, int id);
-void ContaPalavras(Tlista *lista, int id);
+int ContaPalavras(Tlista *lista, int id);
+void ContaPalav(Tlista *lista, int id);
 void imprimeLista(Tlista *Lista);
 
 #endif
