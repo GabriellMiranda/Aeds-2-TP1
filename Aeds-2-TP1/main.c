@@ -16,6 +16,7 @@ int main(){
     TipoApontador TST;
     TipoArvore Patricia = NULL;
     inicializaTST(&TST);
+    printf("oii");
     bool op1 = true;
     char palavra[50];
     
