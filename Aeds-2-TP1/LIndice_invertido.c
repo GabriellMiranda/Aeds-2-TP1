@@ -11,11 +11,11 @@ void FLvazia(Tlista *lista){
  qtd de vezes que a palavra apareceu naquele arquivo
 */
 void Insere_Iarquivo(Tlista *lista, int id){ 
-    if(lista->ultimo == NULL){
+    /*if(lista->ultimo == NULL){
         lista->ultimo = (Apontador)malloc(sizeof(TcelulaInvertida));
         lista->primeiro = lista->ultimo;
-    }
-    /*Apontador pAux = lista->primeiro->prox;
+    }*/
+    Apontador pAux = lista->primeiro->prox;
     Apontador pAnt = lista->primeiro;
     while (pAnt != NULL && pAnt < id){
         pAux = pAux->prox;
@@ -29,9 +29,9 @@ void Insere_Iarquivo(Tlista *lista, int id){
         pAnt->prox = Novo;
         return;
     }
-    lista->ultimo->prox
-    */
+    //lista->ultimo->prox = 
     
+    /*
     else{
         lista->ultimo->prox = (Apontador)malloc(sizeof(TcelulaInvertida));
         lista->ultimo = lista->ultimo->prox; 
@@ -39,7 +39,7 @@ void Insere_Iarquivo(Tlista *lista, int id){
     lista->ultimo->inver.idDoc = id;
     lista->ultimo->inver.qtd = 1;
     lista->ultimo->prox = NULL;
-    lista->tamanho++;
+    lista->tamanho++;*/
 }
 
 int ContaPalavras(Tlista *lista, int id){
