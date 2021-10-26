@@ -1,0 +1,14 @@
+Para a compilação deste programa é necessário ter o GCC, e GTK.
+
+Para a compilação deste algoritmo é necessário o seguinte comando:
+
+Para compilar:
+   gcc `pkg-config --cflags gtk+-3.0` -o r main.c ./Patricia/pat.c ./Lista/listadoc.c ./TST/tst.c ./IndiceInvertido/indiceInvertido.c `pkg-config --libs gtk+-3.0`
+Execução:
+    ./r
+
+Voce também pode usar o makefile:
+digite: 
+   make Compile
+executar:
+   make run
